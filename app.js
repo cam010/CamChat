@@ -12,6 +12,7 @@ let books = []
 
 app.post('/book', (req, res) => {
     const book = req.body;
+    console.log(req)
 
     // Output the book to the console for debugging
     console.log(book);
