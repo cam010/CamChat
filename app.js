@@ -4,8 +4,8 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 3030;
 
-const jsonParser = bodyParser.json()
-const urlencodedParser = bodyParser.urlencoded({extended: false})
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}))
 
 app.get('/', (req, res) => {
     res.send('Hello World, from express');
@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 
 let books = []
 
-app.post('/book', urlencodedParser, (req, res) => {
+app.post('/book', (req, res) => {
 	const book = req.body;
 	console.log(req.body)
 
