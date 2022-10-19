@@ -14,7 +14,8 @@ app.get('/', (req, res) => {
 let books = []
 
 app.post('/book', urlencodedParser, (req, res) => {
-    const book = req.body;
+	const book = req.body;
+	console.log(req.body)
 
     // Output the book to the console for debugging
     console.log(book);
