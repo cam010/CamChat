@@ -4,19 +4,20 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 3030;
 
+const jsonParser = bodyParser.json()
+const urlencodedParser = bodyParser.urlencoded({extended: false})
+
 app.get('/', (req, res) => {
     res.send('Hello World, from express');
 });
 
 let books = []
 
-app.post('/book', (req, res) => {
+app.post('/book', urlencodedParser, (req, res) => {
     const book = req.body;
-    console.log(req.body)
 
     // Output the book to the console for debugging
     console.log(book);
-    console.log(books);
     books.push(book);
 
     res.send('Book is added to the database');
