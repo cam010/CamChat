@@ -11,18 +11,19 @@ app.get('/', (req, res) => {
     res.send('Hello World, from express');
 });
 
-let books = []
+let active_users = []
 
-app.post('/book', (req, res) => {
-	const book = req.body;
-
-    // Output the book to the console for debugging
-    console.log(book);
-    console.log(books);
-    books.push(book);
-
-    res.send('Book is added to the database');
+app.post('/test', (req, res) => {
+    console.log(`TEST -- req.body: ${req.body}`)
+    res.send('TEST -- REQUEST RECIEVED, RESPONSE RECIEVED')
 });
+
+app.post('/login', (req, res) => {
+    console.log(`LOGIN -- username: ${req.body}`)
+    active_users.push(req.body)
+    res.status(200)
+    res.send(`LOGIN -- username ${req.body} logged in`)
+})
 
 app.listen(PORT, () => {
   console.log(`server started on port ${PORT}`);
