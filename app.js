@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
     res.send('Welcome To CamChat!!');
 });
 
-let active_users = {}
+let active_users = []
 
 app.post('/test', (req, res) => {
     console.log(`TEST -- req.body: ${(req.body.test)}`)
