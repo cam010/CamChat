@@ -15,15 +15,20 @@ app.get('/', (req, res) => {
 let active_users = []
 
 app.post('/test', (req, res) => {
-    console.log(`TEST -- req.body: ${req.body}`)
-    res.send('TEST -- REQUEST RECIEVED, RESPONSE RECIEVED')
+    console.log(`TEST -- req.body: ${JSON.parse(req.body)}`)
+    res.send(`TEST -- REQUEST RECIEVED, RESPONSE RECIEVED ${JSON.parse(req.body)}`)
 });
 
 app.post('/login', (req, res) => {
-    console.log(`LOGIN -- username: ${req.body.username}`)
-    active_users.push(req.body)
-    res.status(200)
-    res.send(`LOGIN -- username ${req.body.username} logged in`)
+    if (req.body.username === undefined) {
+        res.status(400)
+        res.send(`LOGIN -- FAILED: no username provided`)
+    } else {
+        console.log(`LOGIN -- username: ${req.body.username}`)
+        active_users.push(req.body)
+        res.status(200)
+        res.send(`LOGIN -- username ${req.body.username} logged in`)
+    }
 })
 
 app.listen(PORT, () => {
