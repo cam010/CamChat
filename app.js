@@ -20,10 +20,10 @@ app.post('/test', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-    console.log(`LOGIN -- username: ${req.body.results}`)
+    console.log(`LOGIN -- username: ${req.body.username}`)
     active_users.push(req.body)
     res.status(200)
-    res.send(`LOGIN -- username ${req.body.results} logged in`)
+    res.send(`LOGIN -- username ${req.body.username} logged in`)
 })
 
 app.listen(PORT, () => {
