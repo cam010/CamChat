@@ -15,8 +15,8 @@ app.get('/', (req, res) => {
 let active_users = []
 
 app.post('/test', (req, res) => {
-    console.log(`TEST -- req.body: ${JSON.parse(req.body)}`)
-    res.send(`TEST -- REQUEST RECIEVED, RESPONSE RECIEVED ${JSON.parse(req.body)}`)
+    console.log(`TEST -- req.body: ${(req.body.test)}`)
+    res.send(`TEST -- REQUEST RECIEVED, RESPONSE RECIEVED ${(req.body.test)}`)
 });
 
 app.post('/login', (req, res) => {
