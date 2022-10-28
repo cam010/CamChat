@@ -1,15 +1,18 @@
 const express = require("express");
 const bodyParser = require('body-parser');
+const { json } = require("body-parser");
 
 const app = express();
 const PORT = process.env.PORT || 3030;
+
+const MODPWD = "Camoderator@CamChat1"
 
 // app.use(bodyParser.json())
 // app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.json())
 
 app.get('/', (req, res) => {
-    res.send('Hello World, from express');
+    res.send('Welcome To CamChat!!');
 });
 
 let active_users = []
@@ -28,6 +31,17 @@ app.post('/login', (req, res) => {
         active_users.push(req.body)
         res.status(200)
         res.send(`LOGIN -- username ${req.body.username} logged in`)
+    }
+})
+
+app.get('/active-users', (req, res) => {
+    if (req.MODPWD !== MODPWD) {
+        res.status(401)
+        res.send("You are not authorised to access this page")
+        console.log("active-users page attempted access blocked - unauthorised")
+    } else {
+        console.log("active-users accessed")
+        res.send(json.toString(active_users))
     }
 })
 
