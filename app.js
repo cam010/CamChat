@@ -36,7 +36,7 @@ app.post('/login', (req, res) => {
 
 app.get('/active-users', (req, res) => {
     console.log("active-users accessed")
-    res.send(json.toString(active_users))
+    res.send(active_users)
 })
 
 app.listen(PORT, () => {
