@@ -35,14 +35,8 @@ app.post('/login', (req, res) => {
 })
 
 app.get('/active-users', (req, res) => {
-    if (req.MODPWD !== MODPWD) {
-        res.status(401)
-        res.send("You are not authorised to access this page")
-        console.log("active-users page attempted access blocked - unauthorised")
-    } else {
-        console.log("active-users accessed")
-        res.send(json.toString(active_users))
-    }
+    console.log("active-users accessed")
+    res.send(json.toString(active_users))
 })
 
 app.listen(PORT, () => {
