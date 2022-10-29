@@ -31,7 +31,7 @@ app.post('/login', (req, res) => {
     } else {
         console.log(`LOGIN -- username: ${req.body.username}`)
         active_users["users"].push({"username" : req.body.username})
-        print(active_users)
+        console.log(active_users)
         res.status(200)
         res.send(`LOGIN -- username ${req.body.username} logged in`)
     }
