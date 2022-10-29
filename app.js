@@ -15,7 +15,9 @@ app.get('/', (req, res) => {
     res.send('Welcome To CamChat!!');
 });
 
-let active_users = []
+let active_users = {
+    "users" : [
+    ]}
 
 app.post('/test', (req, res) => {
     console.log(`TEST -- req.body: ${(req.body.test)}`)
@@ -28,7 +30,8 @@ app.post('/login', (req, res) => {
         res.send(`LOGIN -- FAILED: no username provided`)
     } else {
         console.log(`LOGIN -- username: ${req.body.username}`)
-        active_users.push(req.body)
+        active_users["users"].push({"username" : req.body.username})
+        print(active_users)
         res.status(200)
         res.send(`LOGIN -- username ${req.body.username} logged in`)
     }
